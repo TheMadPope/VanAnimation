@@ -35,7 +35,7 @@ namespace RandomTextAndImages
             var text3Counter = 0;
             var text2Counter = 0;
             string sup;
-            while (iCurrent < text.Length)
+            while (true)
             {
                 iRandom = r.Next(1, 5);
                 if((iCurrent + iRandom) > text.Length)
