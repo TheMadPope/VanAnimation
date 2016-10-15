@@ -20,6 +20,9 @@ namespace RandomTextAndImages
             this.CenterToScreen();
             var i = new ImageForm();
             i.Show();
+            var c = new cthuForm();
+            c.Show();
+            c.jitterText();
         }
 
         public async void jitterText()
@@ -29,6 +32,8 @@ namespace RandomTextAndImages
             string text = System.IO.File.ReadAllText(@"C:\VanCode\textfile.txt");
             var iCurrent = 0;
             var miniCounter = 0;
+            var text3Counter = 0;
+            var text2Counter = 0;
             string sup;
             while (iCurrent < text.Length)
             {
@@ -49,6 +54,21 @@ namespace RandomTextAndImages
                 textBox2.AppendText(s);
                 iCurrent = iCurrent + iRandom;
                 miniCounter++;
+                text2Counter++;
+                text3Counter++;
+
+                if (text3Counter>= r.Next(0, 200))
+                {
+                    textBox3.Location = new Point(r.Next(0,600), r.Next(0,1000));
+                    text3Counter = 0;
+                }
+
+                if (text2Counter >= r.Next(400, 1500))
+                {
+                    textBox2.Location = new Point(r.Next(0, 600), r.Next(0, 800));
+                    text2Counter = 0;
+                }
+
                 await Task.Delay(1);
             }
         }
@@ -63,6 +83,11 @@ namespace RandomTextAndImages
         private void textBox1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void TextForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

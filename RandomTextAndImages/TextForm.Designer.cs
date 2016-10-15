@@ -70,7 +70,7 @@
             this.textBox3.Size = new System.Drawing.Size(77, 13);
             this.textBox3.TabIndex = 2;
             // 
-            // Form1
+            // TextForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -79,8 +79,9 @@
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
-            this.Name = "Form1";
+            this.Name = "TextForm";
             this.Text = "Analysis in progress...";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.TextForm_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

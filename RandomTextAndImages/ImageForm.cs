@@ -22,17 +22,45 @@ namespace RandomTextAndImages
 
         private async void ImageForm_Load(object sender, EventArgs e)
         {
+            var r = new Random();
             var imgCount = Images.Count()-1;
             var iCount = 0;
-            //pictureBox1.Image = Image.FromFile(@"C:\VanCode\Images\1.jpg");
             while (true!=false)
             {
-                if (iCount >= imgCount) { iCount = 0; }
-                pictureBox1.Image = Image.FromFile(Images[iCount]);
+                //if (iCount >= imgCount) { iCount = 0; }
+                pictureBox1.Image = Image.FromFile(Images[r.Next(0,imgCount)]);
+                Size = new Size(pictureBox1.Image.Size.Width, pictureBox1.Image.Size.Height);
+                pictureBox1.Size = new Size(pictureBox1.Image.Size.Width, pictureBox1.Image.Size.Height);
+                Opacity = 100;
                 iCount++;
-                await Task.Delay(200);
+                await Task.Delay(r.Next(1000,4000));
+                //FadeOut(this); Couldn't get this to work.
             }
         }
+
+        //private void FadeOut(Form o, int interval = 100)
+        //{
+        //    var t = new Timer();
+        //    t.Interval = interval;
+        //    t.Start();
+        //    t.Tick += new EventHandler(fade_Tick);
+        //}
+
+        //private void fade_Tick(object sender, EventArgs e)
+        //{
+        //    if (Opacity > 0.0)
+        //    {
+
+        //        //await Task.Delay(interval);
+        //        Opacity -= 0.05;
+        //        t.Start();
+        //        if (t.Tick)
+        //        {
+
+        //        }
+        //    }
+        //    o.Opacity = 0; //make fully invisible       
+        //}
 
         private void getImages()
         {
@@ -44,6 +72,11 @@ namespace RandomTextAndImages
             {
                 Images.Add(file.FullName.ToString());
             }
+        }
+
+        private void ImageForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
