@@ -30,5 +30,10 @@ namespace RandomTextAndImages
                 iCurrent = iCurrent + iRandom;
             }
         }
+
+        private void cthuForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

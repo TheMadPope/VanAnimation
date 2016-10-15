@@ -25,10 +25,16 @@ namespace RandomTextAndImages
             var r = new Random();
             var imgCount = Images.Count()-1;
             var iCount = 0;
+            var rdmImage = string.Empty;
+            var lastImage = string.Empty;
             while (true!=false)
             {
-                //if (iCount >= imgCount) { iCount = 0; }
-                pictureBox1.Image = Image.FromFile(Images[r.Next(0,imgCount)]);
+                while (lastImage == rdmImage)
+                {
+                    rdmImage = Images[r.Next(0, imgCount)];
+                }
+                lastImage = rdmImage;
+                pictureBox1.Image = Image.FromFile(rdmImage);
                 Size = new Size(pictureBox1.Image.Size.Width, pictureBox1.Image.Size.Height);
                 pictureBox1.Size = new Size(pictureBox1.Image.Size.Width, pictureBox1.Image.Size.Height);
                 Opacity = 100;

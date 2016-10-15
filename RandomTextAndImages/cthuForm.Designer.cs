@@ -50,6 +50,7 @@
             this.Controls.Add(this.cthuText);
             this.Name = "cthuForm";
             this.Text = "Translation...";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.cthuForm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
