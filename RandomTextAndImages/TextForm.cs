@@ -20,7 +20,6 @@ namespace RandomTextAndImages
             this.CenterToScreen();
             var i = new ImageForm();
             i.Show();
-            
         }
 
         public async void jitterText()

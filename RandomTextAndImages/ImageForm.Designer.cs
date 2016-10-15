@@ -48,6 +48,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Name = "ImageForm";
             this.Text = "ImageForm";
+            this.Load += new System.EventHandler(this.ImageForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
