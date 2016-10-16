@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace RandomTextAndImages
 {
@@ -16,7 +17,11 @@ namespace RandomTextAndImages
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            var f = new TextForm(); 
+            var f = new TextForm();
+            var i = new ImageForm();
+            i.Show();
+            var c = new cthuForm();
+            c.Show();
             Application.Run(f);
 
         }

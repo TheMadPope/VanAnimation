@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 //using System.Timers;
@@ -18,11 +12,10 @@ namespace RandomTextAndImages
         {
             InitializeComponent();
             this.CenterToScreen();
-            var i = new ImageForm();
-            i.Show();
-            var c = new cthuForm();
-            c.Show();
-            c.jitterText();
+            //Width = Convert.ToInt32(ConfigurationSettings.AppSettings["textWidth"]);
+            //Height= Convert.ToInt32(ConfigurationSettings.AppSettings["textHeight"]);
+            //textBox1.Width = Width;
+            //textBox1.Height = Height;
         }
 
         public async void jitterText()
@@ -69,10 +62,22 @@ namespace RandomTextAndImages
                     text2Counter = 0;
                 }
 
-                await Task.Delay(1);
+                await Delay(1);
             }
         }
-
+        public static Task Delay(double milliseconds)
+        {
+            var tcs = new TaskCompletionSource<bool>();
+            System.Timers.Timer timer = new System.Timers.Timer();
+            timer.Elapsed += (obj, args) =>
+            {
+                tcs.TrySetResult(true);
+            };
+            timer.Interval = milliseconds;
+            timer.AutoReset = false;
+            timer.Start();
+            return tcs.Task;
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {

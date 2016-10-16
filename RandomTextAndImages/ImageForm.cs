@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.IO;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace RandomTextAndImages
 {
@@ -39,9 +41,22 @@ namespace RandomTextAndImages
                 pictureBox1.Size = new Size(pictureBox1.Image.Size.Width, pictureBox1.Image.Size.Height);
                 Opacity = 100;
                 iCount++;
-                await Task.Delay(r.Next(1000,4000));
+                await Delay(r.Next(1000,4000));
                 //FadeOut(this); Couldn't get this to work.
             }
+        }
+        public static Task Delay(double milliseconds)
+        {
+            var tcs = new TaskCompletionSource<bool>();
+            System.Timers.Timer timer = new System.Timers.Timer();
+            timer.Elapsed += (obj, args) =>
+            {
+                tcs.TrySetResult(true);
+            };
+            timer.Interval = milliseconds;
+            timer.AutoReset = false;
+            timer.Start();
+            return tcs.Task;
         }
 
         //private void FadeOut(Form o, int interval = 100)

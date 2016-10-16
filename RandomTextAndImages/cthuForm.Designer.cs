@@ -33,7 +33,7 @@
             // 
             // cthuText
             // 
-            this.cthuText.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.cthuText.BackColor = System.Drawing.Color.Black;
             this.cthuText.Font = new System.Drawing.Font("Lucida Sans Typewriter", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cthuText.ForeColor = System.Drawing.Color.ForestGreen;
             this.cthuText.Location = new System.Drawing.Point(-3, 0);
@@ -46,6 +46,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(246, 830);
             this.Controls.Add(this.cthuText);
             this.Name = "cthuForm";
